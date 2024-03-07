@@ -1,11 +1,14 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Add FirebaseAdmin and Google.Apis.Auth.OAuth2 using statements
+using FirebaseAdmin;
+using Google.Apis.Auth.OAuth2;
 
 var app = builder.Build();
 

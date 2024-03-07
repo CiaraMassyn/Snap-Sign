@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "FirebaseAdmin/2.4.0": {
+      "FirebaseAdmin/2.2.0": {
         "type": "package",
         "dependencies": {
           "Google.Api.Gax.Rest": "3.2.0",
@@ -1047,14 +1047,14 @@
     }
   },
   "libraries": {
-    "FirebaseAdmin/2.4.0": {
-      "sha512": "0O89+8oFnHys8TPsk6af0nqcthedok4R467q/tQ/mUyKsXgG45fu1U0acnkKpOGSXT+550cyFfcUj5QlicoOvg==",
+    "FirebaseAdmin/2.2.0": {
+      "sha512": "nF+7Z7kJ2ikjh75vjKkSmuqgI9b0O8Azygu3GMvx3/z3v5dnk5b6O9nL5/WkuCenYDzyz35r85pkN3C9K93+2g==",
       "type": "package",
-      "path": "firebaseadmin/2.4.0",
+      "path": "firebaseadmin/2.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "firebaseadmin.2.4.0.nupkg.sha512",
+        "firebaseadmin.2.2.0.nupkg.sha512",
         "firebaseadmin.nuspec",
         "lib/net461/FirebaseAdmin.dll",
         "lib/net461/FirebaseAdmin.xml",
@@ -2902,7 +2902,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "FirebaseAdmin >= 2.4.0",
+      "FirebaseAdmin >= 2.1.1",
       "Microsoft.EntityFrameworkCore >= 8.0.2",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.2",
       "Swashbuckle.AspNetCore >= 6.4.0"
@@ -2954,7 +2954,7 @@
         "dependencies": {
           "FirebaseAdmin": {
             "target": "Package",
-            "version": "[2.4.0, )"
+            "version": "[2.1.1, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -2993,5 +2993,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "api depends on FirebaseAdmin (>= 2.1.1) but FirebaseAdmin 2.1.1 was not found. An approximate best match of FirebaseAdmin 2.2.0 was resolved.",
+      "libraryId": "FirebaseAdmin",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }
