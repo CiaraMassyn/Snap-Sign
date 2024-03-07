@@ -6,9 +6,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add FirebaseAdmin and Google.Apis.Auth.OAuth2 using statements
-using FirebaseAdmin;
-using Google.Apis.Auth.OAuth2;
+builder.InitializeFirebase();
 
 var app = builder.Build();
 
