@@ -1,43 +1,98 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using System;
+using System.Collections.Generic;
+using api.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
+using api.ViewModels;
 
 namespace api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/documents                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ")]
     [ApiController]
     public class DocumentController : ControllerBase
     {
-        // GET: api/<DocumentController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly FirestoreDb _firestore;
+
+        public DocumentController()
         {
-            return new string[] { "value1", "value2" };
+            _firestore = FirestoreDb.Create("snapsign-6d108");
         }
 
-        // GET api/<DocumentController>/5
+        //READ DOCUMENTS
+        public IActionResult GetDocuments()
+        {
+            var documents = _firestore.Documents.ToList(); 
+            return Ok(documents);
+        }
+
+        //READ DOCUMENT
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult GetDocumentById(int id)
         {
-            return "value";
+            var document = _firestore.Documents.Find(id);
+
+            if (document == null)
+            {
+                return NotFound();
+            } 
+
+            return Ok(document);
         }
 
-        // POST api/<DocumentController>
+        //CREATE DOCUMENT
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult CreateDocument([FromBody] DocumentVM documentVM)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var newDocument = new Document
+            {
+                Title = documentVM.Title,
+                Content = documentVM.Content,
+            };
+
+            _firestore.Documents.Add(newDocument);
+            _firestore.SaveChanges();
+
+            return CreatedAtAction(nameof(GetDocumentById), new { id = newDocument.DocumentId }, newDocument);
         }
 
-        // PUT api/<DocumentController>/5
+        //UPDATE DOCUMENT
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult UpdateDocument(int id, [FromBody] DocumentVM updatedDocumentVM)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var existingDocument = _firestore.Documents.Find(id);
+
+            if (existingDocument == null)
+                return NotFound();
+
+            // Update properties as needed
+            existingDocument.Title = updatedDocumentVM.Title;
+            existingDocument.Content = updatedDocumentVM.Content;
+
+            _firestore.SaveChanges();
+
+            return Ok(existingDocument);
         }
 
-        // DELETE api/<DocumentController>/5
+        // DELETE DOCUMENT
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult DeleteDocument(int id)
         {
+            var document = _firestore.Documents.Find(id);
+
+            if (document == null)
+                return NotFound();
+
+            _firestore.Documents.Remove(document);
+            _firestore.SaveChanges();
+
+            return NoContent();
         }
     }
 }

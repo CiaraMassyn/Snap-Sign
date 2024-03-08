@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "MWdGvYqKTIiHIZY8H70ZYiIC8cVMbrw9tIlekUXV4kuAPFghh/N+J5XaaZxrMyRFnDStprho/GpnhL2/kVF+/A==",
+  "dgSpecHash": "RSJWkNom4+jUf0DdQU3NfwNaoVHgEOedti925hOpaGfWop07DznoLsK86hAa+ahcGTrTOCO2aPa1R0e1vsLWqQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\ciara\\OneDrive\\Documents\\Snap-Sign\\api\\api\\api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ciara\\.nuget\\packages\\firebase.database\\1.0.0\\firebase.database.1.0.0.nupkg.sha512",
     "C:\\Users\\ciara\\.nuget\\packages\\firebaseadmin\\2.2.0\\firebaseadmin.2.2.0.nupkg.sha512",
     "C:\\Users\\ciara\\.nuget\\packages\\google.api.gax\\3.2.0\\google.api.gax.3.2.0.nupkg.sha512",
     "C:\\Users\\ciara\\.nuget\\packages\\google.api.gax.rest\\3.2.0\\google.api.gax.rest.3.2.0.nupkg.sha512",
@@ -37,6 +38,11 @@
     "C:\\Users\\ciara\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\ciara\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\ciara\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\ciara\\.nuget\\packages\\rx-core\\2.2.5\\rx-core.2.2.5.nupkg.sha512",
+    "C:\\Users\\ciara\\.nuget\\packages\\rx-interfaces\\2.2.5\\rx-interfaces.2.2.5.nupkg.sha512",
+    "C:\\Users\\ciara\\.nuget\\packages\\rx-linq\\2.2.5\\rx-linq.2.2.5.nupkg.sha512",
+    "C:\\Users\\ciara\\.nuget\\packages\\rx-main\\2.2.5\\rx-main.2.2.5.nupkg.sha512",
+    "C:\\Users\\ciara\\.nuget\\packages\\rx-platformservices\\2.2.5\\rx-platformservices.2.2.5.nupkg.sha512",
     "C:\\Users\\ciara\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\ciara\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\ciara\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
@@ -64,6 +70,56 @@
       "warningLevel": 1,
       "message": "api depends on FirebaseAdmin (>= 2.1.1) but FirebaseAdmin 2.1.1 was not found. An approximate best match of FirebaseAdmin 2.2.0 was resolved.",
       "libraryId": "FirebaseAdmin",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Firebase.Database 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Firebase.Database",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Rx-Core 2.2.5' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Rx-Core",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Rx-Interfaces 2.2.5' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Rx-Interfaces",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Rx-Linq 2.2.5' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Rx-Linq",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Rx-PlatformServices 2.2.5' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Rx-PlatformServices",
       "targetGraphs": [
         "net8.0"
       ]
