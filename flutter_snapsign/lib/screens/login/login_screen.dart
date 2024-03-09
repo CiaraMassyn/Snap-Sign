@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'forgotpassword_screen.dart';
+import 'register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -47,6 +49,46 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 24.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ForgotPasswordScreen(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'Forgot your password? Reset',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RegisterScreen(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Don't have an account? Sign up",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 24.0),
             ElevatedButton(
               onPressed: () {
                 String email = emailController.text;
@@ -60,6 +102,24 @@ class LoginScreen extends StatelessWidget {
                 'Login',
                 style: TextStyle(
                   color: Colors.black, 
+                  fontWeight: FontWeight.bold, 
+                  fontSize: 18.0,
+                ),
+              ),
+            ),
+            SizedBox(height: 16.0),
+            // Placeholder for Google login button
+            ElevatedButton(
+              onPressed: () {
+                // Implement Google login functionality here
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+              ),
+              child: Text(
+                'Login with Google',
+                style: TextStyle(
+                  color: Colors.white, 
                   fontWeight: FontWeight.bold, 
                   fontSize: 18.0,
                 ),
