@@ -1,60 +1,70 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'login_screen.dart'; // Import your LoginScreen here
+import 'package:file_picker/file_picker.dart';
+import 'package:image_picker/image_picker.dart';
 
-class ProfileScreen extends StatelessWidget {
+class UploadScreen extends StatefulWidget {
+  @override
+  _UploadScreenState createState() => _UploadScreenState();
+}
+
+class _UploadScreenState extends State<UploadScreen> {
+  File? _selectedFile;
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _selectFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      setState(() {
+        _selectedFile = File(result.files.single.path!);
+      });
+    } else {
+      print('No file selected.');
+    }
+  }
+
+  Future<void> _selectImage() async {
+    final XFile? pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _selectedFile = File(pickedFile.path);
+      });
+    } else {
+      print('No image selected.');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        title: Text('Upload'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Profile',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: _selectFile,
+              child: Text('Select File'),
             ),
-          ),
-          ListTile(
-            leading: Icon(Icons.person),
-            title: Text('Username: John Doe'),
-            subtitle: Text('Email: johndoe@example.com'),
-            trailing: IconButton(
-              icon: Icon(Icons.edit),
-              onPressed: () {
-                // Handle edit profile
-              },
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: _selectImage,
+              child: Text('Select Image'),
             ),
-          ),
-          Divider(),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Settings',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Account Settings'),
-            onTap: () {
-              // Navigate to account settings
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.logout),
-            title: Text('Logout'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => LoginScreen()),
-              );
-            },
-          ),
-        ],
+            SizedBox(height: 16),
+            if (_selectedFile != null)
+              Expanded(
+                child: Image.file(
+                  _selectedFile!,
+                  fit: BoxFit.contain,
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -62,6 +72,6 @@ class ProfileScreen extends StatelessWidget {
 
 void main() {
   runApp(MaterialApp(
-    home: ProfileScreen(),
+    home: UploadScreen(),
   ));
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_snapsign/screens/login/login_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override
@@ -47,7 +48,10 @@ class ProfileScreen extends StatelessWidget {
             leading: Icon(Icons.logout),
             title: Text('Logout'),
             onTap: () {
-              // Perform logout
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => LoginScreen()),
+              );
             },
           ),
         ],
