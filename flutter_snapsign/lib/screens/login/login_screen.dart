@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_snapsign/screens/home_screen.dart';
+import 'package:flutter_snapsign/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter_snapsign/screens/login/forgotpassword_screen.dart';
 import 'package:flutter_snapsign/screens/login/register_screen.dart';
 
@@ -10,6 +10,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _isLoading = false;
+  bool _isPasswordObscured = true;
 
   void _login() {
     setState(() {
@@ -23,8 +24,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => DashboardScreen()),
       );
+    });
+  }
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _isPasswordObscured = !_isPasswordObscured;
     });
   }
 
@@ -51,13 +58,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         SizedBox(height: 16.0),
-                        TextField(
+                        TextFormField(
                           decoration: InputDecoration(
                             labelText: 'Password',
                             hintText: '********',
                             border: OutlineInputBorder(),
+                            suffixIcon: IconButton(
+                              icon: Icon(_isPasswordObscured ? Icons.visibility : Icons.visibility_off),
+                              onPressed: _togglePasswordVisibility,
+                            ),
                           ),
-                          obscureText: true,
+                          obscureText: _isPasswordObscured,
                         ),
                         SizedBox(height: 16.0),
                         ElevatedButton(

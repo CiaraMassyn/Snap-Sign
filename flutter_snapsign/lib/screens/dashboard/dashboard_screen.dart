@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_snapsign/screens/home_screen.dart';
-import 'package:flutter_snapsign/screens/profile_screen.dart';
-import 'package:flutter_snapsign/screens/upload_screen.dart';
+import 'package:flutter_snapsign/screens/dashboard/home_screen.dart';
+import 'package:flutter_snapsign/screens/dashboard/profile_screen.dart';
+import 'package:flutter_snapsign/screens/dashboard/upload_screen.dart';
 
-class BottomNavExample extends StatefulWidget {
+class DashboardScreen extends StatefulWidget {
   @override
-  _BottomNavExampleState createState() => _BottomNavExampleState();
+  _DashboardScreenState createState() => _DashboardScreenState();
 }
 
-class _BottomNavExampleState extends State<BottomNavExample> {
+class _DashboardScreenState extends State<DashboardScreen> {
   int _selectedIndex = 0;
-
-  List<Widget> _pages = [
+  final List<Widget> _pages = [
     HomeScreen(),
     UploadScreen(),
     ProfileScreen(),
@@ -26,11 +25,11 @@ class _BottomNavExampleState extends State<BottomNavExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Bottom Navbar Example'),
-      ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.green, 
+        onTap: _onItemTapped,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -45,9 +44,6 @@ class _BottomNavExampleState extends State<BottomNavExample> {
             label: 'Profile',
           ),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
       ),
     );
   }

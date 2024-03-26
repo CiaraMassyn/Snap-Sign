@@ -4,6 +4,8 @@ class PasswordScreen extends StatelessWidget {
   final String email;
   final TextEditingController newPasswordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
+  bool _isNewPasswordObscured = true;
+  bool _isConfirmPasswordObscured = true;
 
   PasswordScreen(this.email);
 
@@ -31,20 +33,32 @@ class PasswordScreen extends StatelessWidget {
                     SizedBox(height: 16.0),
                     TextFormField(
                       controller: newPasswordController,
-                      obscureText: true,
+                      obscureText: _isNewPasswordObscured,
                       decoration: InputDecoration(
                         labelText: 'New Password',
                         border: OutlineInputBorder(),
+                        suffixIcon: IconButton(
+                          icon: Icon(_isNewPasswordObscured ? Icons.visibility : Icons.visibility_off),
+                          onPressed: () {
+                            _toggleNewPasswordVisibility();
+                          },
+                        ),
                       ),
                       style: TextStyle(color: Colors.black), 
                     ),
                     SizedBox(height: 16.0),
                     TextFormField(
                       controller: confirmPasswordController,
-                      obscureText: true,
+                      obscureText: _isConfirmPasswordObscured,
                       decoration: InputDecoration(
                         labelText: 'Confirm Password',
                         border: OutlineInputBorder(),
+                        suffixIcon: IconButton(
+                          icon: Icon(_isConfirmPasswordObscured ? Icons.visibility : Icons.visibility_off),
+                          onPressed: () {
+                            _toggleConfirmPasswordVisibility();
+                          },
+                        ),
                       ),
                       style: TextStyle(color: Colors.black),
                     ),
@@ -85,6 +99,14 @@ class PasswordScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _toggleNewPasswordVisibility() {
+    _isNewPasswordObscured = !_isNewPasswordObscured;
+  }
+
+  void _toggleConfirmPasswordVisibility() {
+    _isConfirmPasswordObscured = !_isConfirmPasswordObscured;
   }
 
   bool isValidPassword(String newPassword, String confirmPassword) {
