@@ -7,7 +7,12 @@ class ForgotPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Forgot Password'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -20,7 +25,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
                 labelText: 'Email',
-                hintText: 'Enter your registered email',
+                hintText: 'example@gmail.com',
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black),
                 ),
@@ -35,15 +40,14 @@ class ForgotPasswordScreen extends StatelessWidget {
                 String email = emailController.text;
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.lightGreen,
-                side: BorderSide(color: Colors.green),
+                backgroundColor: Color(0xFF7ED957),
+                padding: EdgeInsets.symmetric(horizontal: 60.0, vertical: 16.0),
               ),
               child: Text(
-                'Reset Password',
+                'Reset',
                 style: TextStyle(
-                  color: Colors.black, 
-                  fontWeight: FontWeight.bold, 
-                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
                 ),
               ),
             ),

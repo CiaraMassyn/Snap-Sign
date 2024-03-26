@@ -9,7 +9,12 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -22,7 +27,7 @@ class RegisterScreen extends StatelessWidget {
               style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
                 labelText: 'Full Name',
-                hintText: 'Enter your full name',
+                hintText: 'John Doe',
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black),
                 ),
@@ -38,7 +43,7 @@ class RegisterScreen extends StatelessWidget {
               style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
                 labelText: 'Email',
-                hintText: 'Enter your email',
+                hintText: 'example@gmail.com',
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black),
                 ),
@@ -54,7 +59,7 @@ class RegisterScreen extends StatelessWidget {
               style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
                 labelText: 'Password',
-                hintText: 'Enter your password',
+                hintText: '*******',
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black),
                 ),
@@ -69,18 +74,16 @@ class RegisterScreen extends StatelessWidget {
                 String fullName = fullNameController.text;
                 String email = emailController.text;
                 String password = passwordController.text;
-                // Implement registration logic here
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.lightGreen,
-                side: BorderSide(color: Colors.green),
+                backgroundColor: Color(0xFF7ED957),
+                padding: EdgeInsets.symmetric(horizontal: 60.0, vertical: 16.0),
               ),
               child: Text(
-                'Register',
+                'Sign up',
                 style: TextStyle(
-                  color: Colors.black, 
-                  fontWeight: FontWeight.bold, 
-                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
                 ),
               ),
             ),

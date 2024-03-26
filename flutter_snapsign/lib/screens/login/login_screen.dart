@@ -16,7 +16,6 @@ class _LoginScreenState extends State<LoginScreen> {
       _isLoading = true;
     });
 
-    // Simulate login process
     Future.delayed(Duration(seconds: 2), () {
       setState(() {
         _isLoading = false;
@@ -122,7 +121,9 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               color: Colors.black.withOpacity(0.5),
               child: Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                ),
               ),
             ),
         ],

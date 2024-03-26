@@ -1,35 +1,19 @@
-/*import 'package:flutter/material.dart';
-import 'home_screen.dart';
-import 'add_documents_screen.dart';
-import 'profile_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_snapsign/screens/home_screen.dart';
+import 'package:flutter_snapsign/screens/profile_screen.dart';
+import 'package:flutter_snapsign/screens/upload_screen.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
+class BottomNavExample extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Your App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: BottomNavScreen(),
-    );
-  }
+  _BottomNavExampleState createState() => _BottomNavExampleState();
 }
 
-class BottomNavScreen extends StatefulWidget {
-  @override
-  _BottomNavScreenState createState() => _BottomNavScreenState();
-}
-
-class _BottomNavScreenState extends State<BottomNavScreen> {
+class _BottomNavExampleState extends State<BottomNavExample> {
   int _selectedIndex = 0;
-  List<Widget> _screens = [
+
+  List<Widget> _pages = [
     HomeScreen(),
-    AddDocumentsScreen(),
+    UploadScreen(),
     ProfileScreen(),
   ];
 
@@ -42,16 +26,19 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_selectedIndex],
+      appBar: AppBar(
+        title: Text('Bottom Navbar Example'),
+      ),
+      body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'Add Documents',
+            icon: Icon(Icons.cloud_upload),
+            label: 'Upload',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -64,4 +51,4 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
       ),
     );
   }
-}*/
+}
