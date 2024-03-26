@@ -1,4 +1,7 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
+import 'home_screen.dart';
+import 'add_documents_screen.dart';
+import 'profile_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,23 +11,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
+      title: 'Your App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: BottomNavScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class BottomNavScreen extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _BottomNavScreenState createState() => _BottomNavScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _BottomNavScreenState extends State<BottomNavScreen> {
   int _selectedIndex = 0;
-
-  static List<Widget> _widgetOptions = <Widget>[
-    Text('Home Page'),
-    Text('Documents Page'),
-    Text('Profile Page'),
+  List<Widget> _screens = [
+    HomeScreen(),
+    AddDocumentsScreen(),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -36,22 +42,19 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+      body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.description),
-            label: 'Documents',
+            icon: Icon(Icons.add),
+            label: 'Add Documents',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
+            icon: Icon(Icons.person),
             label: 'Profile',
           ),
         ],
@@ -61,4 +64,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-}
+}*/

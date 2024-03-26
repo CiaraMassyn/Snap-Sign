@@ -33,7 +33,6 @@ class ForgotPasswordScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 String email = emailController.text;
-                // Implement forgot password logic here
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.lightGreen,
