@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_snapsign/screens/login/otp_screen.dart';
+import 'package:flutter_snapsign/screens/login/password_screen.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
+class OTPScreen extends StatelessWidget {
+  final String email;
+  final String otp;
+
+  OTPScreen(this.email, this.otp);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,30 +27,22 @@ class ForgotPasswordScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Text('An OTP has been sent to $email', style: TextStyle(color: Colors.black)), 
                     SizedBox(height: 16.0),
-                    TextFormField(
-                      initialValue: 'test@example.com',
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        labelText: 'Email',
-                        hintText: 'example@gmail.com',
-                        border: OutlineInputBorder(),
-                      ),
-                      style: TextStyle(color: Colors.black), 
-                    ),
+                    _buildOTPDigitFields(context),
                     SizedBox(height: 16.0),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => OTPScreen('test@example.com', '000000')),
+                          MaterialPageRoute(builder: (context) => PasswordScreen(email)),
                         );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF7ED957),
                         padding: EdgeInsets.symmetric(horizontal: 60.0, vertical: 16.0),
                       ),
-                      child: Text('Submit', style: TextStyle(color: Colors.black)), 
+                      child: Text('Verify OTP', style: TextStyle(color: Colors.black)), 
                     ),
                   ],
                 ),
@@ -67,4 +64,36 @@ class ForgotPasswordScreen extends StatelessWidget {
       ),
     );
   }
+
+ Widget _buildOTPDigitFields(BuildContext context) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: List.generate(
+      6,
+      (index) => SizedBox(
+        width: 50, 
+        height: 50, 
+        child: TextFormField(
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            counterText: '', 
+          ),
+          textAlign: TextAlign.center,
+          keyboardType: TextInputType.number,
+          maxLength: 1,
+          style: TextStyle(fontSize: 24), 
+          onChanged: (value) {
+            if (value.length == 1) {
+              if (index < 5) {
+                FocusScope.of(context).nextFocus(); 
+              } else {
+                FocusScope.of(context).unfocus(); 
+              }
+            }
+          },
+        ),
+      ),
+    ),
+  );
+ }
 }

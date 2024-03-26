@@ -12,7 +12,7 @@ class LoadingWidget extends StatelessWidget {
             ),
             child: LinearProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
-              backgroundColor: Colors.grey[300],
+              backgroundColor: Colors.white,
             ),
           ),
         ),

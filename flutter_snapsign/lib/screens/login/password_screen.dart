@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_snapsign/screens/login/otp_screen.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
+class PasswordScreen extends StatelessWidget {
+  final String email;
+  final TextEditingController newPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
+
+  PasswordScreen(this.email);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,24 +27,38 @@ class ForgotPasswordScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Text('Enter new password for $email', style: TextStyle(color: Colors.black)), 
                     SizedBox(height: 16.0),
                     TextFormField(
-                      initialValue: 'test@example.com',
-                      keyboardType: TextInputType.emailAddress,
+                      controller: newPasswordController,
+                      obscureText: true,
                       decoration: InputDecoration(
-                        labelText: 'Email',
-                        hintText: 'example@gmail.com',
+                        labelText: 'New Password',
                         border: OutlineInputBorder(),
                       ),
                       style: TextStyle(color: Colors.black), 
                     ),
                     SizedBox(height: 16.0),
+                    TextFormField(
+                      controller: confirmPasswordController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        labelText: 'Confirm Password',
+                        border: OutlineInputBorder(),
+                      ),
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    SizedBox(height: 16.0),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => OTPScreen('test@example.com', '000000')),
-                        );
+                        String newPassword = newPasswordController.text;
+                        String confirmPassword = confirmPasswordController.text;
+                        if (isValidPassword(newPassword, confirmPassword)) {
+                          Navigator.pop(context); 
+                          Navigator.pop(context); 
+                          Navigator.pop(context); 
+                        } else {
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF7ED957),
@@ -66,5 +85,9 @@ class ForgotPasswordScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  bool isValidPassword(String newPassword, String confirmPassword) {
+    return newPassword.isNotEmpty && newPassword == confirmPassword;
   }
 }
