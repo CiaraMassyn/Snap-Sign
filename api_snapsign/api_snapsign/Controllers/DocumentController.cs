@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Google.Cloud.Firestore;
-using System.Reflection.Metadata;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using api_snapsign.Models;
 
 namespace api_snapsign.Controllers
 {
@@ -17,7 +20,7 @@ namespace api_snapsign.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateDocument(Document document)
+        public async Task<IActionResult> CreateDocument([FromBody] DocumentM document)
         {
             try
             {
@@ -37,17 +40,75 @@ namespace api_snapsign.Controllers
         {
             try
             {
-                var snapshot = await _firestoreDb.Collection("documents").Document(id).GetSnapshotAsync();
-                if (!snapshot.Exists)
+                var document = await GetDocumentById(id);
+                if (document == null)
                     return NotFound();
 
-                var document = snapshot.ConvertTo<Document>();
                 return Ok(document);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, new { error = "Internal server error" });
             }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateDocument(string id, [FromBody] DocumentM document)
+        {
+            try
+            {
+                var documentRef = _firestoreDb.Collection("documents").Document(id);
+                await documentRef.SetAsync(document);
+
+                return Ok(new { message = "Document updated successfully" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = "Internal server error" });
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteDocument(string id)
+        {
+            try
+            {
+                var documentRef = _firestoreDb.Collection("documents").Document(id);
+                await documentRef.DeleteAsync();
+
+                return Ok(new { message = "Document deleted successfully" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = "Internal server error" });
+            }
+        }
+
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchDocuments([FromQuery] string query)
+        {
+            try
+            {
+                var collection = _firestoreDb.Collection("documents");
+                var querySnapshot = await collection.WhereEqualTo("Title", query).GetSnapshotAsync();
+
+                var documents = querySnapshot.Documents.Select(doc => doc.ConvertTo<DocumentM>());
+
+                return Ok(documents);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = "Internal server error" });
+            }
+        }
+
+        private async Task<DocumentM> GetDocumentById(string id)
+        {
+            var snapshot = await _firestoreDb.Collection("documents").Document(id).GetSnapshotAsync();
+            if (snapshot.Exists)
+                return snapshot.ConvertTo<DocumentM>();
+            else
+                return null;
         }
     }
 }
