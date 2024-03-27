@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ciara\\OneDrive\\Documents\\Snap-Sign\\api_snapsign\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B1BC0498-4A77-4462-AB94-31E54272CE05}|api_snapsign\\api_snapsign.csproj|c:\\users\\ciara\\onedrive\\documents\\snap-sign\\api_snapsign\\api_snapsign\\controllers\\documentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1BC0498-4A77-4462-AB94-31E54272CE05}|api_snapsign\\api_snapsign.csproj|solutionrelative:api_snapsign\\controllers\\documentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1BC0498-4A77-4462-AB94-31E54272CE05}|api_snapsign\\api_snapsign.csproj|c:\\users\\ciara\\onedrive\\documents\\snap-sign\\api_snapsign\\api_snapsign\\models\\documentm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1BC0498-4A77-4462-AB94-31E54272CE05}|api_snapsign\\api_snapsign.csproj|solutionrelative:api_snapsign\\models\\documentm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B1BC0498-4A77-4462-AB94-31E54272CE05}|api_snapsign\\api_snapsign.csproj|c:\\users\\ciara\\onedrive\\documents\\snap-sign\\api_snapsign\\api_snapsign\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1BC0498-4A77-4462-AB94-31E54272CE05}|api_snapsign\\api_snapsign.csproj|solutionrelative:api_snapsign\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1BC0498-4A77-4462-AB94-31E54272CE05}|api_snapsign\\api_snapsign.csproj|c:\\users\\ciara\\onedrive\\documents\\snap-sign\\api_snapsign\\api_snapsign\\models\\loginm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1BC0498-4A77-4462-AB94-31E54272CE05}|api_snapsign\\api_snapsign.csproj|solutionrelative:api_snapsign\\models\\loginm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1BC0498-4A77-4462-AB94-31E54272CE05}|api_snapsign\\api_snapsign.csproj|c:\\users\\ciara\\onedrive\\documents\\snap-sign\\api_snapsign\\api_snapsign\\models\\signupm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1BC0498-4A77-4462-AB94-31E54272CE05}|api_snapsign\\api_snapsign.csproj|solutionrelative:api_snapsign\\models\\signupm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,67 +26,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DocumentM.cs",
-              "DocumentMoniker": "C:\\Users\\ciara\\OneDrive\\Documents\\Snap-Sign\\api_snapsign\\api_snapsign\\Models\\DocumentM.cs",
-              "RelativeDocumentMoniker": "api_snapsign\\Models\\DocumentM.cs",
-              "ToolTip": "C:\\Users\\ciara\\OneDrive\\Documents\\Snap-Sign\\api_snapsign\\api_snapsign\\Models\\DocumentM.cs",
-              "RelativeToolTip": "api_snapsign\\Models\\DocumentM.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T16:11:55.498Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DocumentController.cs",
-              "DocumentMoniker": "C:\\Users\\ciara\\OneDrive\\Documents\\Snap-Sign\\api_snapsign\\api_snapsign\\Controllers\\DocumentController.cs",
-              "RelativeDocumentMoniker": "api_snapsign\\Controllers\\DocumentController.cs",
-              "ToolTip": "C:\\Users\\ciara\\OneDrive\\Documents\\Snap-Sign\\api_snapsign\\api_snapsign\\Controllers\\DocumentController.cs*",
-              "RelativeToolTip": "api_snapsign\\Controllers\\DocumentController.cs*",
-              "ViewState": "AQIAAFgAAAAAAAAAAIAwwGwAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T16:08:35.167Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LoginM.cs",
-              "DocumentMoniker": "C:\\Users\\ciara\\OneDrive\\Documents\\Snap-Sign\\api_snapsign\\api_snapsign\\Models\\LoginM.cs",
-              "RelativeDocumentMoniker": "api_snapsign\\Models\\LoginM.cs",
-              "ToolTip": "C:\\Users\\ciara\\OneDrive\\Documents\\Snap-Sign\\api_snapsign\\api_snapsign\\Models\\LoginM.cs",
-              "RelativeToolTip": "api_snapsign\\Models\\LoginM.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T09:05:49.491Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\ciara\\OneDrive\\Documents\\Snap-Sign\\api_snapsign\\api_snapsign\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "api_snapsign\\Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\ciara\\OneDrive\\Documents\\Snap-Sign\\api_snapsign\\api_snapsign\\Controllers\\AuthController.cs",
               "RelativeToolTip": "api_snapsign\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAgwD8AAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T08:14:27.712Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SignUpM.cs",
-              "DocumentMoniker": "C:\\Users\\ciara\\OneDrive\\Documents\\Snap-Sign\\api_snapsign\\api_snapsign\\Models\\SignUpM.cs",
-              "RelativeDocumentMoniker": "api_snapsign\\Models\\SignUpM.cs",
-              "ToolTip": "C:\\Users\\ciara\\OneDrive\\Documents\\Snap-Sign\\api_snapsign\\api_snapsign\\Models\\SignUpM.cs",
-              "RelativeToolTip": "api_snapsign\\Models\\SignUpM.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T07:58:16.094Z",
+              "WhenOpened": "2024-03-27T17:00:37.841Z",
               "EditorCaption": ""
             }
           ]

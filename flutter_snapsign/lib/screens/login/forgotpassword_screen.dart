@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_snapsign/screens/login/otp_screen.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
+  final String email;
+
+  ForgotPasswordScreen({this.email = ''});
+
   @override
   Widget build(BuildContext context) {
+    TextEditingController _emailController = TextEditingController(text: email);
+
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton( 
+        leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
@@ -23,36 +28,43 @@ class ForgotPasswordScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(height: 16.0),
+                    Text(
+                      'Reset Password',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 16.0),
                     TextFormField(
-                      initialValue: 'test@example.com',
+                      controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         labelText: 'Email',
                         hintText: 'example@gmail.com',
                         border: OutlineInputBorder(),
                       ),
-                      style: TextStyle(color: Colors.black), 
+                      style: TextStyle(color: Colors.black),
                     ),
                     SizedBox(height: 16.0),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => OTPScreen('test@example.com', '000000')),
-                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF7ED957),
                         padding: EdgeInsets.symmetric(horizontal: 60.0, vertical: 16.0),
                       ),
-                      child: Text('Submit', style: TextStyle(color: Colors.black)), 
+                      child: Text(
+                        'Submit',
+                        style: TextStyle(color: Colors.black),
+                      ),
                     ),
                   ],
                 ),
               ),
             ),
           ),
-          Container(
+          Padding(
             padding: EdgeInsets.only(bottom: 16.0),
             child: Center(
               child: Text(
