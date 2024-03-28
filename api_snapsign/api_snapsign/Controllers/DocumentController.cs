@@ -24,6 +24,9 @@ namespace api_snapsign.Controllers
         {
             try
             {
+                if (document == null)
+                    return BadRequest("Invalid document data");
+
                 var collection = _firestoreDb.Collection("documents");
                 var documentReference = await collection.AddAsync(document);
 
@@ -40,6 +43,9 @@ namespace api_snapsign.Controllers
         {
             try
             {
+                if (string.IsNullOrEmpty(id))
+                    return BadRequest("Invalid document ID");
+
                 var document = await GetDocumentById(id);
                 if (document == null)
                     return NotFound();
@@ -57,6 +63,9 @@ namespace api_snapsign.Controllers
         {
             try
             {
+                if (document == null || string.IsNullOrEmpty(id))
+                    return BadRequest("Invalid document data or ID");
+
                 var documentRef = _firestoreDb.Collection("documents").Document(id);
                 await documentRef.SetAsync(document);
 
@@ -73,6 +82,9 @@ namespace api_snapsign.Controllers
         {
             try
             {
+                if (string.IsNullOrEmpty(id))
+                    return BadRequest("Invalid document ID");
+
                 var documentRef = _firestoreDb.Collection("documents").Document(id);
                 await documentRef.DeleteAsync();
 
@@ -89,6 +101,9 @@ namespace api_snapsign.Controllers
         {
             try
             {
+                if (string.IsNullOrEmpty(query))
+                    return BadRequest("Invalid search query");
+
                 var collection = _firestoreDb.Collection("documents");
                 var querySnapshot = await collection.WhereEqualTo("Title", query).GetSnapshotAsync();
 

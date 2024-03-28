@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Snap Sign',
-      home: LoginScreen(), 
+      home: LoginScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

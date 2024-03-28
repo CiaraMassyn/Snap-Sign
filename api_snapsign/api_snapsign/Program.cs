@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using FirebaseAdmin;
 using Google.Apis.Auth;
+using FirebaseAdmin;
+using Microsoft.OpenApi.Models;
 using Google.Apis.Auth.OAuth2;
 
 public class Program
@@ -26,29 +27,52 @@ public class Program
 
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
         builder.Services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
+        });
+
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowLocalhost53232",
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:53232")
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+        });
 
         var app = builder.Build();
 
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API V1");
+            });
         }
 
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
 
-        app.MapControllers();
+        app.UseRouting();
+
+        app.UseCors("AllowLocalhost53232");
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
 
         app.Run();
     }
 }
+
 
 
 /*var builder = WebApplication.CreateBuilder(args);
