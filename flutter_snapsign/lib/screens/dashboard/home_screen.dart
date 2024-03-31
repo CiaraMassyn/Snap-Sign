@@ -11,7 +11,6 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Document> _documents = [
     Document(title: 'Document 1', date: 'March 25, 2024'),
     Document(title: 'Document 2', date: 'March 24, 2024'),
-    // Add more documents here
   ];
 
   @override
@@ -22,51 +21,39 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: Text(''),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              setState(() {
-                _isSearchOpen = !_isSearchOpen;
-              });
-            },
-          ),
-        ],
+        title: Text('Previous Documents'),
+
       ),
-      body: Container(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            if (_isSearchOpen)
-              TextField(
-                onChanged: (value) {
-                  setState(() {
-                    _searchQuery = value;
-                  });
-                },
-                decoration: InputDecoration(
-                  hintText: 'Search Documents',
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            SizedBox(height: _isSearchOpen ? 16.0 : 0),
-            Expanded(
-              child: ListView.builder(
-                itemCount: filteredDocuments.length,
-                itemBuilder: (context, index) {
-                  return DocumentItem(
-                    title: filteredDocuments[index].title,
-                    date: filteredDocuments[index].date,
-                  );
-                },
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: TextField(
+              onChanged: (value) {
+                setState(() {
+                  _searchQuery = value;
+                });
+              },
+              decoration: InputDecoration(
+                hintText: 'Search Documents',
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(),
               ),
             ),
-          ],
-        ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: filteredDocuments.length,
+              itemBuilder: (context, index) {
+                return DocumentItem(
+                  title: filteredDocuments[index].title,
+                  date: filteredDocuments[index].date,
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -90,21 +77,29 @@ class DocumentItem extends StatelessWidget {
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(8.0),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
         children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 8.0),
-          Text(
-            date,
-            style: TextStyle(
-              color: Colors.grey,
+          Icon(Icons.description),
+          SizedBox(width: 8), 
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  date,
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

@@ -17,6 +17,7 @@ dependencies:
 
   cupertino_icons: ^1.0.6
   hand_signature: ^3.0.2
+  pspdfkit_flutter: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -26,5 +27,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets: 
-     - lib/assets/SnapSignWhite.png

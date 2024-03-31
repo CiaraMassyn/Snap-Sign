@@ -50,12 +50,22 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: EdgeInsets.only(top: 100.0),
             child: Align(
               alignment: Alignment.center,
-              child: Text(
-                'Login to Snap Sign',
-                style: TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
-                ),
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/SnapSignWhite.jpg', 
+                    width: 100, 
+                    height: 100, 
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    'Login',
+                    style: TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
