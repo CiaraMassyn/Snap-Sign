@@ -5,53 +5,66 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Profile',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              color: Colors.green,
+              child: Container(
+                alignment: Alignment.center,
+                child: Text(
+                  'Profile',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+              ),
             ),
-          ),
-          ListTile(
-            leading: Icon(Icons.person),
-            title: Text('Username: John Doe'),
-            subtitle: Text('Email: johndoe@example.com'),
-            trailing: IconButton(
-              icon: Icon(Icons.edit),
-              onPressed: () {
-                // Handle edit profile
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Username:', style: TextStyle(fontSize: 16)),
+                  Text('John Doe', style: TextStyle(fontSize: 16)),
+                ],
+              ),
+              subtitle: Text('Email: johndoe@example.com', style: TextStyle(fontSize: 16)),
+              trailing: IconButton(
+                icon: Icon(Icons.edit),
+                onPressed: () {},
+              ),
+            ),
+            Divider(),
+            SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              color: Colors.green,
+              child: Container(
+                alignment: Alignment.center,
+                child: Text(
+                  'Settings',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Account Settings', style: TextStyle(fontSize: 16)),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('Logout', style: TextStyle(fontSize: 16)),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                );
               },
             ),
-          ),
-          Divider(),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Settings',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Account Settings'),
-            onTap: () {
-              // Navigate to account settings
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.logout),
-            title: Text('Logout'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => LoginScreen()),
-              );
-            },
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

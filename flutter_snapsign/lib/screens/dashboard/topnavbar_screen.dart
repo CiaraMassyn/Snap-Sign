@@ -8,15 +8,15 @@ class TopNavBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.green.withOpacity(0.5), // Transparent green background
+      backgroundColor: Colors.green.withOpacity(0.5), 
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Icon(Icons.edit, size: 24), // Pen icon on the left
+          Icon(Icons.edit, size: 24), 
           Text(
             'Snap Sign',
             style: TextStyle(
-              fontSize: 20, // Larger font size
+              fontSize: 20, 
               fontWeight: FontWeight.bold,
             ),
           ),
