@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:pspdfkit_flutter/pspdfkit.dart';
 
 class UploadScreen extends StatefulWidget {
   @override
@@ -37,14 +36,6 @@ class _UploadScreenState extends State<UploadScreen> {
     }
   }
 
-  Future<void> _openPSPDFKit() async {
-    if (_selectedFile != null) {
-      await PSPDFKit.present(_selectedFile!.path);
-    } else {
-      print('No file selected.');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,11 +63,6 @@ class _UploadScreenState extends State<UploadScreen> {
                   fit: BoxFit.contain,
                 ),
               ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _openPSPDFKit,
-              child: Text('Open with PSPDFKit'),
-            ),
           ],
         ),
       ),

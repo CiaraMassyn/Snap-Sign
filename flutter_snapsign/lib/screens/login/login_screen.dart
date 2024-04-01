@@ -52,11 +52,6 @@ class _LoginScreenState extends State<LoginScreen> {
               alignment: Alignment.center,
               child: Column(
                 children: [
-                  Image.asset(
-                    'assets/SnapSignWhite.jpg', 
-                    width: 100, 
-                    height: 100, 
-                  ),
                   SizedBox(height: 16),
                   Text(
                     'Login',
