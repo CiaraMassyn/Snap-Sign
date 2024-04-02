@@ -11,6 +11,9 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Document> _documents = [
     Document(title: 'Document 1', date: 'March 25, 2024'),
     Document(title: 'Document 2', date: 'March 24, 2024'),
+    Document(title: 'Document 3', date: 'March 23, 2024'),
+    Document(title: 'Document 4', date: 'March 22, 2024'),
+    Document(title: 'Document 5', date: 'March 21, 2024'),
   ];
 
   @override
@@ -21,24 +24,43 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Previous Documents'),
-
+        title: _isSearchOpen
+            ? TextField(
+                onChanged: (value) {
+                  setState(() {
+                    _searchQuery = value;
+                  });
+                },
+                decoration: InputDecoration(
+                  hintText: 'Search Documents',
+                  border: InputBorder.none,
+                  hintStyle: TextStyle(color: Colors.white70),
+                ),
+                style: TextStyle(color: Colors.white),
+              )
+            : Text('Previous Documents'),
+        actions: [
+          IconButton(
+            icon: _isSearchOpen ? Icon(Icons.close) : Icon(Icons.search),
+            onPressed: () {
+              setState(() {
+                _isSearchOpen = !_isSearchOpen;
+                if (!_isSearchOpen) _searchQuery = ''; // Clear search query when closing search
+              });
+            },
+          ),
+        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Padding(
             padding: EdgeInsets.all(16.0),
-            child: TextField(
-              onChanged: (value) {
-                setState(() {
-                  _searchQuery = value;
-                });
-              },
-              decoration: InputDecoration(
-                hintText: 'Search Documents',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
+            child: Text(
+              'Recent Documents',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -72,15 +94,23 @@ class DocumentItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(16.0),
-      margin: EdgeInsets.symmetric(vertical: 8.0),
+      margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(8.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: Offset(0, 3),
+          ),
+        ],
       ),
       child: Row(
         children: [
-          Icon(Icons.description),
-          SizedBox(width: 8), 
+          Icon(Icons.description, color: Colors.blue),
+          SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,4 +146,10 @@ class Document {
     required this.title,
     required this.date,
   });
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: HomeScreen(),
+  ));
 }
