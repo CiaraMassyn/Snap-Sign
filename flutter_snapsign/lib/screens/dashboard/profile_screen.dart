@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:flutter_snapsign/screens/login/login_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override
@@ -17,11 +16,14 @@ class ProfileScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Row(
                   children: [
-                    Icon(Icons.person_outline, color: Colors.white), 
-                    SizedBox(width: 8), 
+                    Icon(Icons.person_outline, color: Colors.white),
+                    SizedBox(width: 8),
                     Text(
                       'Profile',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                      style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
                   ],
                 ),
@@ -29,14 +31,14 @@ class ProfileScreen extends StatelessWidget {
             ),
             SizedBox(height: 16),
             GestureDetector(
-              onTap: () {
-              },
+              onTap: () {},
               child: Center(
                 child: Stack(
                   children: [
                     CircleAvatar(
                       radius: 50,
-                      backgroundImage: AssetImage('lib/images/carsProfile.jpg'),
+                      backgroundImage:
+                          AssetImage('lib/images/carsProfile.jpg'),
                     ),
                     Positioned(
                       bottom: 0,
@@ -65,6 +67,7 @@ class ProfileScreen extends StatelessWidget {
                 title: Text('Full Name:', style: TextStyle(fontSize: 16)),
                 subtitle: Text('John Doe', style: TextStyle(fontSize: 16)),
                 onTap: () {
+                  _showNameUpdateDialog(context);
                 },
               ),
               secondaryActions: <Widget>[
@@ -72,7 +75,9 @@ class ProfileScreen extends StatelessWidget {
                   caption: 'Update',
                   color: Colors.teal,
                   icon: Icons.edit,
-                  onTap: () {},
+                  onTap: () {
+                    _showNameUpdateDialog(context);
+                  },
                 ),
               ],
             ),
@@ -82,8 +87,10 @@ class ProfileScreen extends StatelessWidget {
               child: ListTile(
                 leading: Icon(Icons.email),
                 title: Text('Email:', style: TextStyle(fontSize: 16)),
-                subtitle: Text('johndoe@example.com', style: TextStyle(fontSize: 16)),
+                subtitle:
+                    Text('johndoe@example.com', style: TextStyle(fontSize: 16)),
                 onTap: () {
+                  _showEmailUpdateDialog(context);
                 },
               ),
               secondaryActions: <Widget>[
@@ -91,7 +98,9 @@ class ProfileScreen extends StatelessWidget {
                   caption: 'Update',
                   color: Colors.teal,
                   icon: Icons.edit,
-                  onTap: () {},
+                  onTap: () {
+                    _showEmailUpdateDialog(context);
+                  },
                 ),
               ],
             ),
@@ -105,10 +114,13 @@ class ProfileScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(Icons.settings, color: Colors.white),
-                    SizedBox(width: 8), 
+                    SizedBox(width: 8),
                     Text(
                       'Settings',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                      style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
                   ],
                 ),
@@ -131,14 +143,15 @@ class ProfileScreen extends StatelessWidget {
             ListTile(
               leading: Icon(
                 Icons.delete,
-                color: Colors.red, 
+                color: Colors.red,
               ),
               title: Text(
                 'Delete Account',
                 style: TextStyle(fontSize: 16, color: Colors.red),
               ),
               onTap: () {
-                _showModal(context, 'Are you sure you want to delete your account?');
+                _showModal(
+                    context, 'Are you sure you want to delete your account?');
               },
             ),
           ],
@@ -146,6 +159,83 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
+
+  void _showNameUpdateDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Update Name'),
+          content: TextField(
+            decoration: InputDecoration(hintText: "Enter your new name"),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
+                side: MaterialStateProperty.all<BorderSide>(BorderSide(color: Colors.red)),
+              ),
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
+                side: MaterialStateProperty.all<BorderSide>(BorderSide(color: Colors.green)),
+              ),
+              child: Text('Submit'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showEmailUpdateDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Update Email'),
+          content: TextField(
+            decoration: InputDecoration(hintText: "Enter your new email"),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
+                side: MaterialStateProperty.all<BorderSide>(BorderSide(color: Colors.red)),
+              ),
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
+                side: MaterialStateProperty.all<BorderSide>(BorderSide(color: Colors.green)),
+              ),
+              child: Text('Submit'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 
   void _showModal(BuildContext context, String title) {
     showModalBottomSheet(
@@ -174,6 +264,8 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
+
+
 
 void main() {
   runApp(MaterialApp(
