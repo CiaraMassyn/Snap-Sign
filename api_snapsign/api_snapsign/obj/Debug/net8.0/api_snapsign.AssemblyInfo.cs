@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("api_snapsign")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+546db49aa05bdd42c43e5d9e3aa678597baa71c0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8938503cb8079f6efb0f7c11f290482cd4268d84")]
 [assembly: System.Reflection.AssemblyProductAttribute("api_snapsign")]
 [assembly: System.Reflection.AssemblyTitleAttribute("api_snapsign")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

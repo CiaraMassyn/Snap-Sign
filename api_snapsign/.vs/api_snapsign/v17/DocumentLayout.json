@@ -74,8 +74,7 @@
               "RelativeToolTip": "api_snapsign\\Controllers\\DocumentController.cs",
               "ViewState": "AQIAABYAAAAAAAAAAAA2wBIAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-28T18:40:24.595Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-28T18:40:24.595Z"
             },
             {
               "$type": "Document",
@@ -119,9 +118,9 @@
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ciara\\OneDrive\\Documents\\Snap-Sign\\api_snapsign\\api_snapsign\\Program.cs",
               "RelativeDocumentMoniker": "api_snapsign\\Program.cs",
-              "ToolTip": "C:\\Users\\ciara\\OneDrive\\Documents\\Snap-Sign\\api_snapsign\\api_snapsign\\Program.cs",
-              "RelativeToolTip": "api_snapsign\\Program.cs",
-              "ViewState": "AQIAADcAAAAAAAAAAAAqwEcAAAAIAAAA",
+              "ToolTip": "C:\\Users\\ciara\\OneDrive\\Documents\\Snap-Sign\\api_snapsign\\api_snapsign\\Program.cs*",
+              "RelativeToolTip": "api_snapsign\\Program.cs*",
+              "ViewState": "AQIAACsAAAAAAAAAAAAQwDQAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-28T07:22:42.112Z",
               "EditorCaption": ""
@@ -160,8 +159,7 @@
               "RelativeToolTip": "api_snapsign\\Controllers\\UserController.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAAHQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T19:31:46.791Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-27T19:31:46.791Z"
             },
             {
               "$type": "Document",
