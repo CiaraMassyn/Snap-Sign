@@ -10,11 +10,19 @@ class ForgotPasswordScreen extends StatelessWidget {
     TextEditingController _emailController = TextEditingController(text: email);
 
     return Scaffold(
+       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: SingleChildScrollView(
-        child: Center( // Added Center widget to center the content vertically
+        child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, // Center content vertically
-            crossAxisAlignment: CrossAxisAlignment.center, // Center content horizontally
+            mainAxisAlignment: MainAxisAlignment.center, 
+            crossAxisAlignment: CrossAxisAlignment.center, 
             children: [
               Padding(
                 padding: EdgeInsets.only(top: 50.0),

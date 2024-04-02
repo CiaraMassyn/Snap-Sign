@@ -80,128 +80,131 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
       body: _isLoading
           ? LoadingWidget()
-          : Center(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        'Sign up',
-                        style: TextStyle(
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
+          : SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Image.asset(
+                      'lib/images/snapSignWhiteBackground.jpg',
+                      height: 100,
+                    ),
+                    SizedBox(height: 8.0),
+                    Text(
+                      'Sign up',
+                      style: TextStyle(
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(height: 8.0),
-                      Text(
-                        'Provide all details',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.grey,
-                        ),
-                        textAlign: TextAlign.center,
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 8.0),
+                    Text(
+                      'Provide all details',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.grey,
                       ),
-                      SizedBox(height: 16.0),
-                      TextFormField(
-                        controller: fullNameController,
-                        keyboardType: TextInputType.text,
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 16.0),
+                    TextFormField(
+                      controller: fullNameController,
+                      keyboardType: TextInputType.text,
+                      style: TextStyle(color: Colors.black),
+                      decoration: InputDecoration(
+                        labelText: 'Full Name',
+                        hintText: 'John Doe',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        prefixIcon: Icon(Icons.person),
+                      ),
+                    ),
+                    SizedBox(height: 16.0),
+                    TextFormField(
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      style: TextStyle(color: Colors.black),
+                      decoration: InputDecoration(
+                        labelText: 'Email',
+                        hintText: 'example@gmail.com',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        prefixIcon: Icon(Icons.mail),
+                      ),
+                    ),
+                    SizedBox(height: 16.0),
+                    TextFormField(
+                      controller: passwordController,
+                      obscureText: _isPasswordObscured,
+                      onChanged: (value) {
+                        setState(() {
+                          _isConfirmPasswordObscured = value.isEmpty ? true : false;
+                        });
+                      },
+                      style: TextStyle(color: Colors.black),
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        hintText: '*******',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(_isPasswordObscured
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                          onPressed: _togglePasswordVisibility,
+                        ),
+                        prefixIcon: Icon(Icons.lock),
+                      ),
+                    ),
+                    SizedBox(height: 16.0),
+                    Visibility(
+                      visible: !_isConfirmPasswordObscured,
+                      child: TextFormField(
+                        controller: confirmController,
+                        obscureText: _isConfirmPasswordObscured,
                         style: TextStyle(color: Colors.black),
                         decoration: InputDecoration(
-                          labelText: 'Full Name',
-                          hintText: 'John Doe',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          prefixIcon: Icon(Icons.person),
-                        ),
-                      ),
-                      SizedBox(height: 16.0),
-                      TextFormField(
-                        controller: emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
-                          labelText: 'Email',
-                          hintText: 'example@gmail.com',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          prefixIcon: Icon(Icons.mail),
-                        ),
-                      ),
-                      SizedBox(height: 16.0),
-                      TextFormField(
-                        controller: passwordController,
-                        obscureText: _isPasswordObscured,
-                        onChanged: (value) {
-                          setState(() {
-                            _isConfirmPasswordObscured = value.isEmpty ? true : false;
-                          });
-                        },
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
-                          labelText: 'Password',
+                          labelText: 'Confirm Password',
                           hintText: '*******',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           suffixIcon: IconButton(
-                            icon: Icon(_isPasswordObscured
+                            icon: Icon(_isConfirmPasswordObscured
                                 ? Icons.visibility
                                 : Icons.visibility_off),
-                            onPressed: _togglePasswordVisibility,
+                            onPressed: _toggleConfirmPasswordVisibility,
                           ),
                           prefixIcon: Icon(Icons.lock),
                         ),
                       ),
-                      SizedBox(height: 16.0),
-                      Visibility(
-                        visible: !_isConfirmPasswordObscured,
-                        child: TextFormField(
-                          controller: confirmController,
-                          obscureText: _isConfirmPasswordObscured,
-                          style: TextStyle(color: Colors.black),
-                          decoration: InputDecoration(
-                            labelText: 'Confirm Password',
-                            hintText: '*******',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                            suffixIcon: IconButton(
-                              icon: Icon(_isConfirmPasswordObscured
-                                  ? Icons.visibility
-                                  : Icons.visibility_off),
-                              onPressed: _toggleConfirmPasswordVisibility,
-                            ),
-                            prefixIcon: Icon(Icons.lock),
-                          ),
+                    ),
+                    SizedBox(height: 24.0),
+                    ElevatedButton(
+                      onPressed: _signup,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFF7ED957),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 60.0, vertical: 16.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
-                      SizedBox(height: 24.0),
-                      ElevatedButton(
-                        onPressed: _signup,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF7ED957),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 60.0, vertical: 16.0),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                        ),
-                        child: Text(
-                          'Sign up',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),

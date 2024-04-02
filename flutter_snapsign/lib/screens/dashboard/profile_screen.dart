@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_snapsign/screens/login/login_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -16,8 +17,8 @@ class ProfileScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Row(
                   children: [
-                    Icon(Icons.person_outline, color: Colors.white), // Profile icon
-                    SizedBox(width: 8), // Spacer
+                    Icon(Icons.person_outline, color: Colors.white), 
+                    SizedBox(width: 8), 
                     Text(
                       'Profile',
                       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
@@ -35,7 +36,7 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 50,
-                      backgroundImage: AssetImage('assets/default_avatar.png'),
+                      backgroundImage: AssetImage('lib/images/carsProfile.jpg'),
                     ),
                     Positioned(
                       bottom: 0,
@@ -56,19 +57,43 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
             ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Full Name:', style: TextStyle(fontSize: 16)),
-              subtitle: Text('John Doe', style: TextStyle(fontSize: 16)),
-              onTap: () {
-              },
+            Slidable(
+              actionPane: SlidableDrawerActionPane(),
+              actionExtentRatio: 0.25,
+              child: ListTile(
+                leading: Icon(Icons.person),
+                title: Text('Full Name:', style: TextStyle(fontSize: 16)),
+                subtitle: Text('John Doe', style: TextStyle(fontSize: 16)),
+                onTap: () {
+                },
+              ),
+              secondaryActions: <Widget>[
+                IconSlideAction(
+                  caption: 'Update',
+                  color: Colors.teal,
+                  icon: Icons.edit,
+                  onTap: () {},
+                ),
+              ],
             ),
-            ListTile(
-              leading: Icon(Icons.email),
-              title: Text('Email:', style: TextStyle(fontSize: 16)),
-              subtitle: Text('johndoe@example.com', style: TextStyle(fontSize: 16)),
-              onTap: () {
-              },
+            Slidable(
+              actionPane: SlidableDrawerActionPane(),
+              actionExtentRatio: 0.25,
+              child: ListTile(
+                leading: Icon(Icons.email),
+                title: Text('Email:', style: TextStyle(fontSize: 16)),
+                subtitle: Text('johndoe@example.com', style: TextStyle(fontSize: 16)),
+                onTap: () {
+                },
+              ),
+              secondaryActions: <Widget>[
+                IconSlideAction(
+                  caption: 'Update',
+                  color: Colors.teal,
+                  icon: Icons.edit,
+                  onTap: () {},
+                ),
+              ],
             ),
             Divider(),
             SizedBox(height: 16),
@@ -79,8 +104,8 @@ class ProfileScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Row(
                   children: [
-                    Icon(Icons.settings, color: Colors.white), // Settings icon
-                    SizedBox(width: 8), // Spacer
+                    Icon(Icons.settings, color: Colors.white),
+                    SizedBox(width: 8), 
                     Text(
                       'Settings',
                       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
