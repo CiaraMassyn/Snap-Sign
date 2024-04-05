@@ -1,6 +1,0 @@
-@api_snapsign_HostAddress = http://localhost:5280
-
-GET {{api_snapsign_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

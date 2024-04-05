@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'dart:io';
-import 'package:flutter_snapsign/screens/dashboard/documentSign_screen.dart';
 
 class UploadDocumentScreen extends StatefulWidget {
   @override
@@ -44,19 +43,6 @@ class _UploadDocumentScreenState extends State<UploadDocumentScreen> {
               child: Text('Select Document'),
             ),
             SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                if (_document != null) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => DocumentSigningPage(document: _document!)),
-                  );
-                } else {
-                  // Handle no document selected
-                }
-              },
-              child: Text('Continue'),
-            ),
           ],
         ),
       ),

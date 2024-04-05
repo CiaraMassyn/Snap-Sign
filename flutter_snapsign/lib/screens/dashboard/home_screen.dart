@@ -9,11 +9,8 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _isSearchOpen = false;
   String _searchQuery = '';
   List<Document> _documents = [
-    Document(title: 'Document 1', date: 'March 25, 2024'),
-    Document(title: 'Document 2', date: 'March 24, 2024'),
-    Document(title: 'Document 3', date: 'March 23, 2024'),
-    Document(title: 'Document 4', date: 'March 22, 2024'),
-    Document(title: 'Document 5', date: 'March 21, 2024'),
+    Document(title: 'TestFile', date: 'March 25, 2024', icon: Icons.insert_drive_file),
+    Document(title: 'Test', date: 'March 21, 2024', icon: Icons.insert_drive_file),
   ];
 
   @override
@@ -45,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () {
               setState(() {
                 _isSearchOpen = !_isSearchOpen;
-                if (!_isSearchOpen) _searchQuery = ''; // Clear search query when closing search
+                if (!_isSearchOpen) _searchQuery = '';
               });
             },
           ),
@@ -69,8 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
               itemCount: filteredDocuments.length,
               itemBuilder: (context, index) {
                 return DocumentItem(
-                  title: filteredDocuments[index].title,
-                  date: filteredDocuments[index].date,
+                  document: filteredDocuments[index],
                 );
               },
             ),
@@ -82,12 +78,10 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class DocumentItem extends StatelessWidget {
-  final String title;
-  final String date;
+  final Document document;
 
   DocumentItem({
-    required this.title,
-    required this.date,
+    required this.document,
   });
 
   @override
@@ -109,14 +103,14 @@ class DocumentItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(Icons.description, color: Colors.blue),
+          Icon(document.icon ?? Icons.insert_drive_file, color: Colors.blue),
           SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  title,
+                  document.title,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -124,7 +118,7 @@ class DocumentItem extends StatelessWidget {
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  date,
+                  document.date,
                   style: TextStyle(
                     color: Colors.grey,
                   ),
@@ -141,10 +135,12 @@ class DocumentItem extends StatelessWidget {
 class Document {
   final String title;
   final String date;
+  final IconData? icon; // Make the icon nullable
 
   Document({
     required this.title,
     required this.date,
+    this.icon, // Specify the icon as nullable
   });
 }
 
