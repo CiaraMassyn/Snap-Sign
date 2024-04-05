@@ -1,41 +1,27 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'dart:io';
+import 'package:flutter_snapsign/screens/dashboard/documentSign_screen.dart';
 
-class UploadScreen extends StatefulWidget {
+class UploadDocumentScreen extends StatefulWidget {
   @override
-  _UploadScreenState createState() => _UploadScreenState();
+  _UploadDocumentScreenState createState() => _UploadDocumentScreenState();
 }
 
-class _UploadScreenState extends State<UploadScreen> {
-  File? _pickedFile;
+class _UploadDocumentScreenState extends State<UploadDocumentScreen> {
+  File? _document;
 
-  Future<void> _pickFile() async {
-    if (await Permission.storage.request().isGranted) {
-      FilePickerResult? result = await FilePicker.platform.pickFiles();
+  Future<void> _pickDocument() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['pdf', 'doc', 'docx'], 
+    );
 
-      if (result != null) {
-        setState(() {
-          _pickedFile = File(result.files.single.path!);
-        });
-      }
+    if (result != null) {
+      setState(() {
+        _document = File(result.files.single.path!);
+      });
     } else {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text('Permission Required'),
-          content: Text('Please grant permission to access device storage.'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text('OK'),
-            ),
-          ],
-        ),
-      );
     }
   }
 
@@ -49,11 +35,28 @@ class _UploadScreenState extends State<UploadScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            _document != null
+                ? Image.file(_document!)
+                : Icon(Icons.insert_drive_file, size: 100),
+            SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _pickFile,
+              onPressed: _pickDocument,
               child: Text('Select Document'),
             ),
-            if (_pickedFile != null) Text('Selected: ${_pickedFile!.path}'),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                if (_document != null) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DocumentSigningPage(document: _document!)),
+                  );
+                } else {
+                  // Handle no document selected
+                }
+              },
+              child: Text('Continue'),
+            ),
           ],
         ),
       ),

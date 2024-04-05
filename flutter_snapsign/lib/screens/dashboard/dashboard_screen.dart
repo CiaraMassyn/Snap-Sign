@@ -3,6 +3,7 @@ import 'package:flutter_snapsign/screens/dashboard/home_screen.dart';
 import 'package:flutter_snapsign/screens/dashboard/profile_screen.dart';
 import 'package:flutter_snapsign/screens/dashboard/topnav_screen.dart';
 import 'package:flutter_snapsign/screens/dashboard/upload_screen.dart';
+
 import 'package:flutter_snapsign/screens/login/login_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -14,7 +15,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int _selectedIndex = 0;
   final List<Widget> _pages = [
     HomeScreen(),
-    UploadScreen(),
+    UploadDocumentScreen(),
     ProfileScreen(),
   ];
 
